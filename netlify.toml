@@ -1,6 +1,6 @@
 # Global settings
 [build]
-  command = "npm run build" # Replace with the correct build command for your project
+  command = "node serve.js" # Replace with the correct build command for your project
   publish = "public" # Replace with the directory where your static files are generated
 
 [[redirects]]
