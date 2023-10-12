@@ -166,7 +166,7 @@ UserPassword=process.env.UserPassword
             contentType: image.img.contentType,
           }
         };
-
+      }
     // Make the GET request to the Flask server's /result endpoint
     axios.post(`${flaskServerURL}/result`)
       .then((response) => {
