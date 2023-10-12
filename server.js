@@ -147,15 +147,13 @@ UserPassword=process.env.UserPassword
 
 
 // It takes Photo as input 
-
-   app.post('/test', async (req, res, next) => {
+app.post('/test', async (req, res, next)  => {
   try {
     let imageId;
 
     // Check if a new photo is uploaded
     if (req.body.imageId) {
-      // Retrieve the image from the database based on imageId
-      const image = await imgSchema.findById(req.body.imageId);
+       const image = await imgSchema.findById(req.body.imageId);
       if (image) {
         const obj = {
           name: req.body.name,
@@ -167,6 +165,11 @@ UserPassword=process.env.UserPassword
           }
         };
       }
+      await imgSchema.create(obj);
+      req.session.email = req.body.email;
+      req.session.name = req.body.name;
+    }
+
     // Make the GET request to the Flask server's /result endpoint
     axios.post(`${flaskServerURL}/result`)
       .then((response) => {
@@ -204,7 +207,6 @@ UserPassword=process.env.UserPassword
     res.status(500).send('Internal server error');
   }
 });
-  
 app.get('/pdf',(req,res)=>{
   res.render('pdf')
 })
