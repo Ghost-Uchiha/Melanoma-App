@@ -1,7 +1,7 @@
 # Global settings
 [build]
   command = "npm run build"  # Replace with the correct build script if needed
- 
+  start = "node start" 
   publish = "public"
 
 
