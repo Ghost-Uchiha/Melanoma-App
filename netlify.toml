@@ -1,0 +1,40 @@
+# Global settings
+[build]
+  command = "npm run build" # Replace with the correct build command for your project
+  publish = "public" # Replace with the directory where your static files are generated
+
+[[redirects]]
+  from = "/index"
+  to = "/views/index.ejs"
+  status = 200
+
+[[redirects]]
+  from = "/css/*"
+  to = "/public/css/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/js/*"
+  to = "/public/js/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/images/*"
+  to = "/public/images/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/test"
+  to = "/views/test.ejs"
+  status = 200
+
+[[redirects]]
+  from = "/result"
+  to = "/views/result.ejs"
+  status = 200
+
+[[redirects]]
+  force = true
+  from = "/*"
+  to = "/server.js"
+  status = 200
