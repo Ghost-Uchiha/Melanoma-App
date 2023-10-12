@@ -1,7 +1,6 @@
 
 [build]
-  command = "npm run build"  # Replace with the correct build script if needed
-  start = "node start"
+  command = "npm run build-start"  # Replace with the correct build script if needed
   publish = "public"
 
 
