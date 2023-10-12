@@ -1,0 +1,28 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "views/index.ejs", 
+        "use": "@vercel/node"
+      },
+      {
+        "src": "server.js", 
+        "use": "@vercel/node"
+      },
+      {
+        "src": "scan.py", 
+        "use": "@vercel/python"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/api/(.*)",
+        "dest": "server/scan.py"
+      },
+      {
+        "src": "/",
+        "dest": "views/index.ejs" 
+      }
+    ]
+  }
+  
