@@ -47,20 +47,20 @@ app.use(bodyParser.json());
 
 var multer = require('multer');
 
-var storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, 'uploads');
-  },
-  filename: (req, file, cb) => {
-    const currentDate = new Date().toLocaleDateString('en-US').replace(/\//g, '-');
-    const filename = req.body.email + '-' + currentDate + '.jpg';
-    cb(null, filename);
-    console.log(req.body.email)
-  }
-});
+// var storage = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//     cb(null, 'uploads');
+//   },
+//   filename: (req, file, cb) => {
+//     const currentDate = new Date().toLocaleDateString('en-US').replace(/\//g, '-');
+//     const filename = req.body.email + '-' + currentDate + '.jpg';
+//     cb(null, filename);
+//     console.log(req.body.email)
+//   }
+// });
 
 
-var upload = multer({ storage: storage });
+// var upload = multer({ storage: storage });
 
 app.get('/',(req,res)=>{
   res.render('index')
