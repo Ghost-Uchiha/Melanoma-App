@@ -1,7 +1,8 @@
 # Global settings
-[build]
-  command = "node server.js" # Replace with the correct build command for your project
-  publish = "public" # Replace with the directory where your static files are generated
+"scripts": {
+  "start": "node server.js",
+  "build": "npm run build"
+}
 
 [[redirects]]
   from = "/index"
