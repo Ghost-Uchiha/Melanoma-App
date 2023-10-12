@@ -147,25 +147,25 @@ UserPassword=process.env.UserPassword
 
 
 // It takes Photo as input 
-app.post('/test', upload.single('image'), async (req, res, next) => {
+
+   app.post('/test', async (req, res, next) => {
   try {
     let imageId;
 
     // Check if a new photo is uploaded
-    if (req.file) {
-      const obj = {
-        name: req.body.name,
-        desc: req.body.desc,
-        email: req.body.email,
-        img: {
-          data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
-          contentType: 'image/png'
-        }
-      };
-      await imgSchema.create(obj);
-      req.session.email = req.body.email;
-      req.session.name = req.body.name;
-    }
+    if (req.body.imageId) {
+      // Retrieve the image from the database based on imageId
+      const image = await imgSchema.findById(req.body.imageId);
+      if (image) {
+        const obj = {
+          name: req.body.name,
+          desc: req.body.desc,
+          email: req.body.email,
+          img: {
+            data: image.img.data,
+            contentType: image.img.contentType,
+          }
+        };
 
     // Make the GET request to the Flask server's /result endpoint
     axios.post(`${flaskServerURL}/result`)
